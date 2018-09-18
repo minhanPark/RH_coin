@@ -1,0 +1,13 @@
+{
+  "name": "RH_coin",
+  "version": "1.0.0",
+  "description": "RHCOIN, made in NodeJS",
+  "main": "src/server.js",
+  "repository": "https://github.com/minhanPark/RH_coin.git",
+  "author": "minhan <alsgks1218@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
+}
