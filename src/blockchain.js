@@ -39,6 +39,7 @@ const createNewBlock = data => {
     newTimestamp,
     data
   );
+  addBlockToChain(newBlock);
   return newBlock;
 };
 
@@ -47,6 +48,17 @@ const getBlockHash = block => {
 };
 
 const isNewStructureValid = block => {
+  if(!typeof block.index === "number"){
+    console.log("block.index err")
+  } else if(!typeof block.hash === "string"){
+    console.log("block.hash err")
+  } else if(!typeof block.previousHash === "string"){
+    console.log("block.previousHash err")
+  } else if(!typeof block.timestamp === "number"){
+    console.log("block.timestamp err")
+  } else if(!typeof block.data === "string"){
+    console.log("block.data err")
+  }
   return (
     typeof block.index === "number" &&
     typeof block.hash === "string" &&
@@ -102,10 +114,16 @@ const replaceChain = candidateChain => {
 };
 
 const addBlockToChain = candidateBlock => {
-  if(isNewBlockValid(candidateBlock, getLastBlock())){
+  if(isNewBlockValid(candidateBlock, getLastBlock()))
+  {
     blockchain.push(candidateBlock);
     return true;
   } else {
     return false;
   }
 };
+
+module.exports = {
+  getBlockchain,
+  createNewBlock
+}
