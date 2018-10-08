@@ -2,6 +2,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   morgan = require("morgan"),
   Blockchain = require("./blockchain"),
+  cors = require("cors"),
   P2P = require("./p2p"),
   Mempool = require("./mempool"),
   _ = require("lodash"),
@@ -16,6 +17,7 @@ const PORT = process.env.HTTP_PORT || 3000;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 app.use(morgan("combined"));
 
 app.route("/blocks").get((req, res) => {
